@@ -17,20 +17,21 @@ public class Item {
     private String description;
     private Dimensions dimensions;
     private String status;
-    private String borrower;
+    private Contact borrower;
     protected transient Bitmap image;
     protected String image_base64;
     private String id;
 
-    public Item(String title, String maker, String description, Dimensions dimensions, Bitmap image, String id) {
+    public Item(String title, String maker, String description, Dimensions
+            dimensions, Bitmap image,
+                String id) {
         this.title = title;
         this.maker = maker;
         this.description = description;
         this.dimensions = dimensions;
         this.status = "Available";
-        this.borrower = "";
+        this.borrower = null;
         addImage(image);
-
         if (id == null){
             setId();
         } else {
@@ -90,14 +91,12 @@ public class Item {
         return status;
     }
 
-    public void setBorrower(String borrower) {
+    public void setBorrower(Contact borrower) {
         this.borrower = borrower;
     }
-
-    public String getBorrower() {
+    public Contact getBorrower() {
         return borrower;
     }
-
     public void addImage(Bitmap new_image){
         if (new_image != null) {
             image = new_image;
